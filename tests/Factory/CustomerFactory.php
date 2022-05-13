@@ -62,7 +62,7 @@ class CustomerFactory extends CakephpBaseFactory
     public function withUsers($parameter = null, int $n = 1): CustomerFactory
     {
         return $this->with(
-            'Users',
+            'CustomerUser.Users',
             \App\Test\Factory\UserFactory::make($parameter, $n)->without('Customers')
         );
     }
