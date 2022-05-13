@@ -43,14 +43,19 @@ class UsersTableTest extends TestCase
     {
         $this->addWarning("don't return same error if test run single");
 
-        $user = UserFactory::make()
-            ->with('Customers.CustomerUser', ['is_super' => 1])
-            ->persist();
+        $user = UserFactory::make()->with(
+           'CustomerUser',
+           CustomerUserFactory::make(['is_super' => 1])->with('Customers')
+        )->persist();
+
         debug($user->toArray());
 
         $customer = CustomerFactory::make()
-            ->with('Users.CustomerUser', ['is_tech' => 1])
-            ->persist();
+           ->with(
+              'CustomerUser',
+              CustomerUserFactory::make(['is_tech' => 1])->with('Users')
+           )
+           ->persist();
         debug($customer->toArray());
 
     }
