@@ -4,6 +4,7 @@
  * Copy and save this file as app_local.php and make changes as required.
  * Note: It is not recommended to commit files with credentials such as app_local.php
  * into source code version control.
+ * @noinspection DuplicatedCode
  */
 declare(strict_types=1);
 
