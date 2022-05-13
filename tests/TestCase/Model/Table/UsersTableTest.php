@@ -41,6 +41,8 @@ class UsersTableTest extends TestCase
      */
     public function testIncompatibleAssociation(): void
     {
+        $this->addWarning("don't return same error if test run single");
+
         $user = UserFactory::make()
             ->with('Customers.CustomerUser', ['is_super' => 1])
             ->persist();
@@ -56,7 +58,7 @@ class UsersTableTest extends TestCase
     /**
      * @test
      */
-    public function testNoUserId(): void
+    public function testIsSuperNotSet(): void
     {
         $customer = CustomerFactory::make()
             ->withUsers()
